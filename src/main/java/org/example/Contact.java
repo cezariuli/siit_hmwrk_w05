@@ -1,6 +1,7 @@
 package org.example;
 
 public class Contact {
+
     private String phoneNumber;
     private String firstName;
     private String lastName;
@@ -10,5 +11,18 @@ public class Contact {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
 
 }

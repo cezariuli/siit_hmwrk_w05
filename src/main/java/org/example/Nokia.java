@@ -8,4 +8,7 @@ public abstract class Nokia extends Phone{
         super("Nokia", batteryLife);
         this.phoneModel = phoneModel;
     }
+
+    //better to move it in Phone class
+
 }
