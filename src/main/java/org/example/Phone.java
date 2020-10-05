@@ -12,6 +12,8 @@ public abstract class Phone {
 
     // this ArrayList contains the contact list of a phone
     public List<Contact> contacts = new ArrayList<Contact>();
+    //this List contains the call history
+    public List<String> callHistory = new ArrayList<String>();
     // this Map will store the message history for a phone number;
     public Map<String, ArrayList<String>> messages = new HashMap<String, ArrayList<String>>();
 
@@ -30,6 +32,7 @@ public abstract class Phone {
             System.out.println("There phone book is empty in this phone");
         }
         else {
+
             for (Contact contact: contacts) {
                 System.out.println( (contacts.indexOf(contact) + 1) + ". " + contact.getPhoneNumber() +
                         " " + contact.getLastName() + " " + contact.getFirstName());
@@ -56,10 +59,32 @@ public abstract class Phone {
     }
 
     public void listMessages(String contact){
-
+        Integer cnt = 1;
+        System.out.println("Messages of " + contact);
+        for (String message: messages.get(contact) ) {
+            System.out.println("\tMessage #" + cnt + ": " + message);
+            cnt += 1;
+        }
     }
-/*    public void call(String number);
-    public void viewHistory();*/
+
+    public void call(String phoneNumber) {
+        if (getBatteryLife() >= 2) {
+            callHistory.add(phoneNumber);
+            decreaseBatteryLife(2);
+        }
+        else {
+            System.out.println("Not enough battery to make a call.");
+        }
+    }
+
+    public void viewHistory() {
+        Integer cnt = 1;
+        System.out.println("Call History: ");
+        for (String call: callHistory) {
+            System.out.println("call #" + cnt + ": " + call);
+            cnt++;
+        }
+    }
 
     public Integer getBatteryLife() {
         return batteryLife;
